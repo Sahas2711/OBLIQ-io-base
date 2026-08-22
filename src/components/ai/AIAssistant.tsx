@@ -210,29 +210,34 @@ export function AIAssistant({ open, onClose }: AIAssistantProps) {
 
           for (const line of lines) {
             if (line.startsWith("data: ")) {
+              const raw = line.slice(6);
+              if (!raw || raw.trim() === "") continue;
+              let parsed: Record<string, unknown>;
               try {
-                const data = JSON.parse(line.slice(6));
-                if (data.error) {
-                  throw new Error(data.error);
-                }
-                if (data.text) {
-                  fullText += data.text;
-                  setStreaming(fullText);
-                }
-                if (data.done) {
-                  // Finalize
-                  const assistantMessage: AIAssistantMessage = {
-                    id: `msg_${Date.now()}`,
-                    role: "assistant",
-                    content: fullText || "I couldn't generate a response. Please try again.",
-                    timestamp: new Date().toISOString(),
-                    disclaimer: true,
-                  };
-                  setMessages((prev) => [...prev, assistantMessage]);
-                  setStreaming("");
-                }
+                parsed = JSON.parse(raw);
               } catch {
-                // Skip malformed chunks
+                // Skip malformed JSON chunks
+                continue;
+              }
+              // Handle API error
+              if (parsed.error) {
+                throw new Error(String(parsed.error));
+              }
+              if (parsed.text) {
+                fullText += parsed.text;
+                setStreaming(fullText);
+              }
+              if (parsed.done) {
+                // Finalize
+                const assistantMessage: AIAssistantMessage = {
+                  id: `msg_${Date.now()}`,
+                  role: "assistant",
+                  content: fullText || "I couldn't generate a response. Please try again.",
+                  timestamp: new Date().toISOString(),
+                  disclaimer: true,
+                };
+                setMessages((prev) => [...prev, assistantMessage]);
+                setStreaming("");
               }
             }
           }
