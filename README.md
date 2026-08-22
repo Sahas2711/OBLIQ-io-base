@@ -47,7 +47,7 @@ obliq-io/
 │   │   ├── data/               # Types and mock data
 │   │   ├── hooks/              # React hooks
 │   │   └── validations/        # Zod schemas
-│   └── middleware.ts           # Route protection
+│   └── proxy.ts                # Route protection (proxy)
 ├── supabase/
 │   └── schema.sql              # Database schema with RLS
 └── public/                     # Static assets
@@ -93,7 +93,7 @@ Edit `.env.local` with your Supabase credentials:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
@@ -117,7 +117,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 - **Provider**: Supabase Auth with Credentials (email + password)
 - **Session**: JWT-based via HTTP-only cookies
-- **Middleware**: Route protection in `src/middleware.ts`
+- **Proxy**: Route protection in `src/proxy.ts`
 - **RLS**: Every database query scoped to the authenticated user's firm
 
 ### Flow
@@ -190,10 +190,10 @@ In Vercel dashboard → Settings → Environment Variables, add:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_ANON_KEY
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
-AI_PROVIDER=openai
-OPENAI_API_KEY=sk-...
+AI_PROVIDER=groq
+GROQ_API_KEY=gsk_...
 ```
 
 ### 4. Deploy
