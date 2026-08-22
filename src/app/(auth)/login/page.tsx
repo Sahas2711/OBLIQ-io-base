@@ -7,6 +7,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { FormField } from "@/components/auth/FormField";
+import { GoogleOAuthButton } from "@/components/auth/GoogleOAuthButton";
 
 function LoginForm() {
   const router = useRouter();
@@ -187,6 +188,17 @@ function LoginForm() {
             )}
           </button>
         </form>
+
+        <div className="relative my-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-neutral-200" />
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-white px-3 text-neutral-500">or</span>
+          </div>
+        </div>
+
+        <GoogleOAuthButton />
       </div>
 
       <p className="mt-6 text-center text-sm text-neutral-600">

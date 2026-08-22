@@ -11,6 +11,7 @@ import {
 } from "@/lib/validations/auth";
 import { FormField } from "@/components/auth/FormField";
 import { PasswordStrengthBar } from "@/components/auth/PasswordStrengthBar";
+import { GoogleOAuthButton } from "@/components/auth/GoogleOAuthButton";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -261,6 +262,17 @@ export default function SignupPage() {
             )}
           </button>
         </form>
+
+        <div className="relative my-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-neutral-200" />
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-white px-3 text-neutral-500">or</span>
+          </div>
+        </div>
+
+        <GoogleOAuthButton label="Continue with Google" />
       </div>
 
       <p className="mt-6 text-center text-sm text-neutral-600">
