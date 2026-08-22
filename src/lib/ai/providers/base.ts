@@ -278,7 +278,7 @@ export class GroqService implements AIService {
   private apiKey: string;
   private model: string;
 
-  constructor(apiKey: string, model = "llama-3.1-70b-versatile") {
+  constructor(apiKey: string, model = "llama-3.3-70b-versatile") {
     this.apiKey = apiKey;
     this.model = model;
   }
