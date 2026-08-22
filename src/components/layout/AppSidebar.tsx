@@ -12,6 +12,7 @@ import {
   Shield,
   LogOut,
   ChevronLeft,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -97,6 +98,17 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
         })}
 
         <div className="pt-4 mt-4 border-t border-neutral-200/60">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-ai-assistant"))}
+            className={cn(
+              "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors w-full text-left",
+              "text-neutral-600 hover:text-brand-700 hover:bg-brand-50"
+            )}
+            title={collapsed ? "AI Assistant" : undefined}
+          >
+            <Sparkles className="h-5 w-5 shrink-0" />
+            {!collapsed && <span>AI Assistant</span>}
+          </button>
           {secondaryNav.map((item) => {
             const isActive = pathname.startsWith(item.href);
             return (

@@ -8,7 +8,10 @@ const inter = Inter({
   display: "swap",
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://obliq.io";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     default: "OBLIQ — AI Compliance Orchestration for Indian CA Firms",
     template: "%s | OBLIQ",

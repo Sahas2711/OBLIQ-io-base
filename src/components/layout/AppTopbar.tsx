@@ -36,7 +36,7 @@ export function AppTopbar({ onMobileMenuToggle, mobileMenuOpen }: AppTopbarProps
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 bg-white border-b border-neutral-200/60">
+    <header className="sticky top-0 z-10 bg-white border-b border-neutral-200/60">
       <div className="flex h-14 items-center justify-between px-4 sm:px-6">
         {/* Left: Mobile menu + Logo */}
         <div className="flex items-center gap-3">

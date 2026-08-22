@@ -40,7 +40,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
       {/* Backdrop */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-neutral-900/50 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-50 bg-neutral-900/50 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
       )}
@@ -48,7 +48,7 @@ export function MobileSidebar({ open, onClose }: MobileSidebarProps) {
       {/* Sidebar panel */}
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-neutral-200 transform transition-transform duration-200 lg:hidden",
+          "fixed inset-y-0 left-0 z-[60] w-64 bg-white border-r border-neutral-200 transform transition-transform duration-200 lg:hidden",
           open ? "translate-x-0" : "-translate-x-full"
         )}
       >

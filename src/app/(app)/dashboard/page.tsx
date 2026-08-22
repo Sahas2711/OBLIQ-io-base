@@ -11,16 +11,12 @@ import {
   ArrowUpRight,
   Sparkles,
   Calendar,
-  Filter,
-  ChevronRight,
   Bell,
   TrendingUp,
   ArrowRight,
   AlertCircle,
   Target,
   RefreshCw,
-  Eye,
-  MoreHorizontal,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
